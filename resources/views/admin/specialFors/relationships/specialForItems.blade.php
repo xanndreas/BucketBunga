@@ -49,6 +49,9 @@
                             {{ trans('cruds.item.fields.rating') }}
                         </th>
                         <th>
+                            {{ trans('cruds.item.fields.photo') }}
+                        </th>
+                        <th>
                             &nbsp;
                         </th>
                     </tr>
@@ -89,6 +92,13 @@
                             </td>
                             <td>
                                 {{ $item->rating ?? '' }}
+                            </td>
+                            <td>
+                                @foreach($item->photo as $key => $media)
+                                    <a href="{{ $media->getUrl() }}" target="_blank" style="display: inline-block">
+                                        <img src="{{ $media->getUrl('thumb') }}">
+                                    </a>
+                                @endforeach
                             </td>
                             <td>
                                 @can('item_show')

@@ -49,6 +49,9 @@
                         {{ trans('cruds.item.fields.rating') }}
                     </th>
                     <th>
+                        {{ trans('cruds.item.fields.photo') }}
+                    </th>
+                    <th>
                         &nbsp;
                     </th>
                 </tr>
@@ -101,6 +104,8 @@
                     </td>
                     <td>
                         <input class="search" type="text" placeholder="{{ trans('global.search') }}">
+                    </td>
+                    <td>
                     </td>
                     <td>
                     </td>
@@ -166,6 +171,7 @@
 { data: 'location_district', name: 'location.district' },
 { data: 'price', name: 'price' },
 { data: 'rating', name: 'rating' },
+{ data: 'photo', name: 'photo', sortable: false, searchable: false },
 { data: 'actions', name: '{{ trans('global.actions') }}' }
     ],
     orderCellsTop: true,

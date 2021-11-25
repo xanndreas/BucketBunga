@@ -23,6 +23,7 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', '
     Route::apiResource('locations', 'LocationApiController');
 
     // Item
+    Route::post('items/media', 'ItemApiController@storeMedia')->name('items.storeMedia');
     Route::apiResource('items', 'ItemApiController');
 
     // Cart

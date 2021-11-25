@@ -91,6 +91,18 @@
                             {{ $item->rating }}
                         </td>
                     </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.item.fields.photo') }}
+                        </th>
+                        <td>
+                            @foreach($item->photo as $key => $media)
+                                <a href="{{ $media->getUrl() }}" target="_blank" style="display: inline-block">
+                                    <img src="{{ $media->getUrl('thumb') }}">
+                                </a>
+                            @endforeach
+                        </td>
+                    </tr>
                 </tbody>
             </table>
             <div class="form-group">
