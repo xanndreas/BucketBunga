@@ -95,55 +95,35 @@
             <div class="row flex align-items-center justify-content-between">
                 <div class="col-md-6 col-xs-12 col-sm-6 col2 flex justify-content-end">
                     <ul class="nav navbar-nav js-menubar hidden-xs hidden-sm">
-                        <li class="level1 active dropdown home-page-v1-st style-menu-home-1"><a class="menu-home-3 home-1-font" href="#">Home</a>
-                            <span class="plus js-plus-icon"></span>
-                            <div class="menu-level-1 dropdown-menu style5">
-                                <ul class="level1">
-                                    <li class="level2 col-6">
-                                        <a href="#">Pusat Informasi</a>
-                                    </li>
-                                </ul>
-                                <div class="clearfix"></div>
-                            </div>
+                        <li class="level1 active home-page-v1-st style-menu-home-1"><a class="menu-home-3 home-1-font" href="{{route('user.index')}}">Home</a>
                         </li>
-                        <li class="level1 active dropdown home-page-v1-st style-menu-home-1"><a class="menu-home-3 home-1-font" href="#">Home</a>
-                            <span class="plus js-plus-icon"></span>
-                            <div class="menu-level-1 dropdown-menu style5">
-                                <ul class="level1">
-                                    <li class="level2 col-6">
-                                        <a href="#">Tentang</a>
-                                    </li>
-                                </ul>
-                                <div class="clearfix"></div>
-                            </div>
+                        <li class="level1 active home-page-v1-st style-menu-home-1"><a class="menu-home-3 home-1-font" href="{{route('user.about')}}">Tentang</a>
                         </li>
-                        <li class="level1 active dropdown home-page-v1-st style-menu-home-1"><a class="menu-home-3 home-1-font" href="#">Home</a>
-                            <span class="plus js-plus-icon"></span>
-                            <div class="menu-level-1 dropdown-menu style5">
-                                <ul class="level1">
-                                    <li class="level2 col-6">
-                                        <a href="#">Akun Saya</a>
-                                    </li>
-                                </ul>
-                                <div class="clearfix"></div>
-                            </div>
+                        @if(Auth::user() == null)
+                            <li class="level1 active dropdown home-page-v1-st style-menu-home-1"><a class="menu-home-3 home-1-font" href="{{route('user.login')}}" style="display: inline-block">Login</a>/<a class="menu-home-3 home-1-font" href="{{route('user.register')}}" style="display: inline-block">Register</a>
+                            </li>
+                        @else
+                        <li class="level1 active dropdown home-page-v1-st style-menu-home-1"><a class="menu-home-3 home-1-font" href="{{route('user.myAccount')}}">Akun Saya</a>
                         </li>
+                        @endif
                     </ul>
                 </div>
                 <div class="col-md-6 col-xs-12 col-sm-6 carts">
                     <div class="search3 search-home-1">
-                        <form method="get" action="/search" role="search" class="search-form  has-categories-select">
-                            <input name="q" class="search-input" type="text" value="" placeholder="Cari bunga ..." autocomplete="off">
+                        <form method="POST" action="{{route('user.filterItem')}}" role="search" class="search-form  has-categories-select">
+                            @csrf
+                            <input class="search-input" type="text" value="" placeholder="Cari bunga ..." autocomplete="off" name="filter">
                             <input type="hidden" name="post_type" value="product">
                             <button type="submit" id="search-btn"><i class="ion-ios-search-strong"></i></button>
                         </form>
                     </div>
+
                     <div class="date3 dropdown">
+                        @if(Auth::user() != null)
                         <div class="date mycart">
                             <button class="fa fa-shopping-bag dropdown-toggle" type="button" data-toggle="dropdown">
                             </button>
                             <div class="dropdown-menu cart2 drop-home-1 check-out-home-1">
-
                                 <div class="cart-2">
                                     <div class="check-out">
                                         <div class="img-cart">
@@ -204,6 +184,7 @@
                             <p>01 </p>
                             <span>/ $150.00</span>
                         </div>
+                        @endif
                     </div>
                 </div>
             </div>

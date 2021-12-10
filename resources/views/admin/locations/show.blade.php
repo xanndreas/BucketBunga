@@ -28,7 +28,7 @@
                             {{ trans('cruds.location.fields.address') }}
                         </th>
                         <td>
-                            ********
+                            {{ $location->address }}
                         </td>
                     </tr>
                     <tr>

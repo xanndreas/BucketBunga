@@ -3,11 +3,69 @@
 namespace App\Http\Controllers\Users;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
+use App\Models\Color;
+use App\Models\Item;
+use App\Models\Location;
+use App\Models\SpecialFor;
+use App\Models\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class HomeController extends Controller
 {
     public function index()
     {
-        return view('users.index');
+        $items = Item::with(['category', 'colors', 'special_fors', 'location'])->latest()->take('8')->get();
+        $categories = Category::all();
+        $colors = Color::all();
+        $specialFor = SpecialFor::all();
+        $locations = Location::all();
+        return view('users.index',compact('items','categories','colors','specialFor','locations'));
+    }
+
+    public function detailProduct()
+    {
+        return view('users.detail-product');
+    }
+
+    public function myAccount()
+    {
+        return view('users.contact');
+    }
+
+    public function about()
+    {
+        return view('users.about');
+    }
+
+    public function login()
+    {
+        return view('users.login');
+    }
+
+    public function register()
+    {
+        return view('users.register');
+    }
+
+    public function storeRegister(Request $request){
+        $user = User::create([
+            'name'     => $request['name'],
+            'email'    => $request['email'],
+            'password' => Hash::make($request['password']),
+        ]);
+
+        return view('users.login');
+    }
+
+    public function product()
+    {
+        $items = Item::with(['category', 'colors', 'special_fors', 'location'])->get();
+        $categories = Category::all();
+        $colors = Color::all();
+        $specialFor = SpecialFor::all();
+        $locations = Location::all();
+        return view('users.product',compact('items','categories','colors','specialFor','locations'));
     }
 }

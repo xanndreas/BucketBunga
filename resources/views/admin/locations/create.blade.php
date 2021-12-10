@@ -11,7 +11,7 @@
             @csrf
             <div class="form-group">
                 <label class="required" for="address">{{ trans('cruds.location.fields.address') }}</label>
-                <input class="form-control {{ $errors->has('address') ? 'is-invalid' : '' }}" type="password" name="address" id="address" required>
+                <input class="form-control {{ $errors->has('address') ? 'is-invalid' : '' }}" type="text" name="address" id="address" required>
                 @if($errors->has('address'))
                     <div class="invalid-feedback">
                         {{ $errors->first('address') }}

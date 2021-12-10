@@ -1,5 +1,6 @@
 <?php
-
+use App\Http\Controllers\Users\HomeController;
+use App\Http\Controllers\Users\ItemController;
 Route::redirect('/', '/login');
 Route::get('/home', function () {
     if (session('status')) {
@@ -46,9 +47,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
     // Item
     Route::delete('items/destroy', 'ItemController@massDestroy')->name('items.massDestroy');
-    Route::post('items/media', 'ItemController@storeMedia')->name('items.storeMedia');
-    Route::post('items/ckmedia', 'ItemController@storeCKEditorImages')->name('items.storeCKEditorImages');
     Route::resource('items', 'ItemController');
+    Route::post('items/media', 'ItemController@storeMedia')->name('items.storeMedia');
 
     // Cart
     Route::delete('carts/destroy', 'CartController@massDestroy')->name('carts.massDestroy');
@@ -63,6 +63,18 @@ Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 
         Route::post('profile/destroy', 'ChangePasswordController@destroy')->name('password.destroyProfile');
     }
 });
-Route::group(['prefix' => 'users', 'as' => 'user.', 'namespace' => 'User', function () {
 
-}
+Route::get('/florist-home', [HomeController::class, 'index'])->name('user.index');
+Route::get('/user-login', [HomeController::class, 'login'])->name('user.login');
+Route::get('/user-register', [HomeController::class, 'register'])->name('user.register');
+Route::post('/storeRegister', [HomeController::class, 'storeRegister'])->name('storeRegister');
+Route::get('/detail-product', [HomeController::class, 'detailProduct'])->name('user.detailProduct');
+Route::get('/my-account', [HomeController::class, 'myAccount'])->name('user.myAccount');
+Route::get('/about', [HomeController::class, 'about'])->name('user.about');
+Route::get('/products', [HomeController::class, 'product'])->name('user.products');
+Route::get('/filter/{id}/{type}', [ItemController::class, 'filter'])->name('user.filter');
+Route::post('/filter-item', [ItemController::class, 'filterItem'])->name('user.filterItem');
+
+
+
+
