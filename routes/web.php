@@ -68,10 +68,11 @@ Route::get('/florist-home', [HomeController::class, 'index'])->name('user.index'
 Route::get('/user-login', [HomeController::class, 'login'])->name('user.login');
 Route::get('/user-register', [HomeController::class, 'register'])->name('user.register');
 Route::post('/storeRegister', [HomeController::class, 'storeRegister'])->name('storeRegister');
-Route::get('/detail-product', [HomeController::class, 'detailProduct'])->name('user.detailProduct');
+Route::get('/detail-product/{id}', [HomeController::class, 'detailProduct'])->name('user.detailProduct');
 Route::get('/my-account', [HomeController::class, 'myAccount'])->name('user.myAccount');
 Route::get('/about', [HomeController::class, 'about'])->name('user.about');
 Route::get('/products', [HomeController::class, 'product'])->name('user.products');
+Route::post('/storeLogout', [HomeController::class, 'storeLogout'])->name('storeLogout');
 Route::get('/filter/{id}/{type}', [ItemController::class, 'filter'])->name('user.filter');
 Route::post('/filter-item', [ItemController::class, 'filterItem'])->name('user.filterItem');
 

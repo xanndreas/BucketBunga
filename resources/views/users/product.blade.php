@@ -118,7 +118,7 @@
                             @foreach($items as $item)
                             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12  product-item shopv2">
                                 <div class="product-img">
-                                    <a href="{{route('user.detailProduct')}}">
+                                    <a href="{{route('user.detailProduct',$item->id)}}">
                                         @foreach($item->photo as $key => $media)
                                             <img src="{{ $media->getUrl() }}" alt="" class="img-responsive">
                                         @endforeach

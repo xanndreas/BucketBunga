@@ -105,6 +105,8 @@
                         @else
                         <li class="level1 active dropdown home-page-v1-st style-menu-home-1"><a class="menu-home-3 home-1-font" href="{{route('user.myAccount')}}">Akun Saya</a>
                         </li>
+                        <li class="level1 active dropdown home-page-v1-st style-menu-home-1"><a class="menu-home-3 home-1-font" href="#" onclick="event.preventDefault(); document.getElementById('logoutuser').submit();">Logout</a>
+                        </li>
                         @endif
                     </ul>
                 </div>
@@ -330,6 +332,9 @@
 <script src="{{ asset('assets/js/slick.min.js')}}"></script>
 <script src="{{ asset('assets/js/countdown.js')}}"></script>
 <script src="{{ asset('assets/js/main.js')}}"></script>
+<form id="logoutuser" action="{{ route('storeLogout') }}" method="POST" style="display: none;">
+    {{ csrf_field() }}
+</form>
 <script>
     $(document).ready(function() {
         $('.owl-carousel').owlCarousel({

@@ -15,7 +15,7 @@
                         <div class="col-md-2 col-sm-2 col-xs-12 images-hp2">
                             <div class="product-item pro-v1 home1 home3-mgbt bottom-home2 ">
                                 <div class="product-img">
-                                    <a href="{{route('user.detailProduct')}}">
+                                    <a href="{{route('user.detailProduct',$item->id)}}">
                                         @foreach($item->photo as $key => $media)
                                             <img src="{{ $media->getUrl() }}" alt="" class="img-responsive">
                                         @endforeach

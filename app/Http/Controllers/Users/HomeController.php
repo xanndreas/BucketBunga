@@ -10,6 +10,7 @@ use App\Models\Location;
 use App\Models\SpecialFor;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class HomeController extends Controller
@@ -24,9 +25,14 @@ class HomeController extends Controller
         return view('users.index',compact('items','categories','colors','specialFor','locations'));
     }
 
-    public function detailProduct()
+    public function detailProduct($id)
     {
-        return view('users.detail-product');
+        $item = Item::with(['category', 'colors', 'special_fors', 'location'])->where('id',$id)->first();
+        $categories = Category::all();
+        $colors = Color::all();
+        $specialFor = SpecialFor::all();
+        $locations = Location::all();
+        return view('users.detail-product',compact('item','categories','colors','specialFor','locations'));
     }
 
     public function myAccount()
@@ -44,6 +50,12 @@ class HomeController extends Controller
         return view('users.login');
     }
 
+    public function storeLogout()
+    {
+        Auth::logout();
+        return redirect('/florist-home');
+    }
+
     public function register()
     {
         return view('users.register');
@@ -54,6 +66,7 @@ class HomeController extends Controller
             'name'     => $request['name'],
             'email'    => $request['email'],
             'password' => Hash::make($request['password']),
+            'approved' => '1',
         ]);
 
         return view('users.login');
