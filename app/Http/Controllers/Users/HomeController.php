@@ -22,7 +22,9 @@ class HomeController extends Controller
         $colors = Color::all();
         $specialFor = SpecialFor::all();
         $locations = Location::all();
-        return view('users.index',compact('items','categories','colors','specialFor','locations'));
+        $cart = \Cart::getContent();
+
+        return view('users.index',compact('items','categories','colors','specialFor','locations', 'cart'));
     }
 
     public function detailProduct($id)
@@ -32,17 +34,23 @@ class HomeController extends Controller
         $colors = Color::all();
         $specialFor = SpecialFor::all();
         $locations = Location::all();
-        return view('users.detail-product',compact('item','categories','colors','specialFor','locations'));
+        $cart = \Cart::getContent();
+
+        return view('users.detail-product',compact('cart','item','categories','colors','specialFor','locations'));
     }
 
     public function myAccount()
     {
-        return view('users.contact');
+        $cart = \Cart::getContent();
+
+        return view('users.contact', compact('cart'));
     }
 
     public function about()
     {
-        return view('users.about');
+        $cart = \Cart::getContent();
+
+        return view('users.about', compact('cart'));
     }
 
     public function login()
@@ -74,11 +82,12 @@ class HomeController extends Controller
 
     public function product()
     {
+        $cart = \Cart::getContent();
         $items = Item::with(['category', 'colors', 'special_fors', 'location'])->get();
         $categories = Category::all();
         $colors = Color::all();
         $specialFor = SpecialFor::all();
         $locations = Location::all();
-        return view('users.product',compact('items','categories','colors','specialFor','locations'));
+        return view('users.product',compact('cart', 'items','categories','colors','specialFor','locations'));
     }
 }

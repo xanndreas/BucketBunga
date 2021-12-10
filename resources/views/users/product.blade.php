@@ -14,8 +14,12 @@
                             <div class="wrappage">
                                 <!-- Filters -->
                                 <div class="dropdown drop-filter">
-                                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
-                                        <span class="caret"></span><img class="img-filter" src="{{asset('assets/images/icon7.png')}}" alt="">Filters</button>
+                                    <button class="btn btn-primary dropdown-toggle" type="button"
+                                            data-toggle="dropdown">
+                                        <span class="caret"></span><img class="img-filter"
+                                                                        src="{{asset('assets/images/icon7.png')}}"
+                                                                        alt="">Filters
+                                    </button>
                                     <div class=" dropdown-menu filter-shoppage filter-shoppage-2">
                                         <div class="container container-filter">
                                             <div class="row">
@@ -23,7 +27,9 @@
                                                     <h4>Sort by</h4>
                                                     <ul>
                                                         @foreach($categories as $item)
-                                                            <li><a href="{{route('user.filter',['id' => $item->id, 'type' => 'category'])}}">{{$item->name}}</a></li>
+                                                            <li>
+                                                                <a href="{{route('user.filter',['id' => $item->id, 'type' => 'category'])}}">{{$item->name}}</a>
+                                                            </li>
                                                         @endforeach
                                                     </ul>
                                                 </div>
@@ -31,7 +37,9 @@
                                                     <h4>Special For</h4>
                                                     <ul>
                                                         @foreach($specialFor as $item)
-                                                            <li><a href="{{route('user.filter',['id' => $item->id, 'type' => 'specialFor'])}}">{{$item->name}}</a></li>
+                                                            <li>
+                                                                <a href="{{route('user.filter',['id' => $item->id, 'type' => 'specialFor'])}}">{{$item->name}}</a>
+                                                            </li>
                                                         @endforeach
                                                     </ul>
                                                 </div>
@@ -39,7 +47,11 @@
                                                     <h4>Color</h4>
                                                     <ul class="color2">
                                                         @foreach($colors as $item)
-                                                            <li><a href="{{route('user.filter',['id' => $item->id, 'type' => 'color'])}}"><div style="width: 20px; height: 20px; border-radius: 50%;background-color: {{$item->hex}}"></div></a></li>
+                                                            <li>
+                                                                <a href="{{route('user.filter',['id' => $item->id, 'type' => 'color'])}}">
+                                                                    <div
+                                                                        style="width: 20px; height: 20px; border-radius: 50%;background-color: {{$item->hex}}"></div>
+                                                                </a></li>
                                                         @endforeach
                                                     </ul>
                                                 </div>
@@ -48,7 +60,9 @@
                                                     <div class="ul-1 shop3">
                                                         <ul>
                                                             @foreach($locations as $item)
-                                                                <li><a href="{{route('user.filter',['id' => $item->id, 'type' => 'location'])}}">{{$item->district}}</a></li>
+                                                                <li>
+                                                                    <a href="{{route('user.filter',['id' => $item->id, 'type' => 'location'])}}">{{$item->district}}</a>
+                                                                </li>
                                                             @endforeach
                                                         </ul>
                                                     </div>
@@ -58,9 +72,12 @@
                                     </div>
                                     <div class="wrappage">
                                         <div class="filter-collection-left hidden-lg hidden-md">
-                                            <a class="btn"><i class="zoa-icon-filter"><img src="{{asset('assets/images/icon7.png')}}" alt=""></i> Filter</a>
+                                            <a class="btn"><i class="zoa-icon-filter"><img
+                                                        src="{{asset('assets/images/icon7.png')}}" alt=""></i>
+                                                Filter</a>
                                         </div>
-                                        <div class="col-xs-12 hidden-md hidden-lg col-left collection-sidebar" id="filter-sidebar">
+                                        <div class="col-xs-12 hidden-md hidden-lg col-left collection-sidebar"
+                                             id="filter-sidebar">
                                             <div class="close-sidebar-collection hidden-lg hidden-md">
                                                 <span>Filter</span><i class="icon_close ion-close"></i>
                                             </div>
@@ -68,7 +85,9 @@
                                                 <h4>Sort by</h4>
                                                 <ul>
                                                     @foreach($categories as $item)
-                                                        <li><a href="{{route('user.filter',['id' => $item->id, 'type' => 'category'])}}">{{$item->name}}</a></li>
+                                                        <li>
+                                                            <a href="{{route('user.filter',['id' => $item->id, 'type' => 'category'])}}">{{$item->name}}</a>
+                                                        </li>
                                                     @endforeach
                                                 </ul>
                                             </div>
@@ -76,7 +95,9 @@
                                                 <h4>Special For</h4>
                                                 <ul>
                                                     @foreach($specialFor as $item)
-                                                        <li><a href="{{route('user.filter',['id' => $item->id, 'type' => 'specialFor'])}}">{{$item->name}}</a></li>
+                                                        <li>
+                                                            <a href="{{route('user.filter',['id' => $item->id, 'type' => 'specialFor'])}}">{{$item->name}}</a>
+                                                        </li>
                                                     @endforeach
                                                 </ul>
                                             </div>
@@ -84,7 +105,11 @@
                                                 <h4>Color</h4>
                                                 <ul class="color2">
                                                     @foreach($colors as $item)
-                                                    <li><a href="{{route('user.filter',['id' => $item->id, 'type' => 'color'])}}"><div style="width: 20px; height: 20px; border-radius: 50%;background-color: {{$item->hex}}"></div></a></li>
+                                                        <li>
+                                                            <a href="{{route('user.filter',['id' => $item->id, 'type' => 'color'])}}">
+                                                                <div
+                                                                    style="width: 20px; height: 20px; border-radius: 50%;background-color: {{$item->hex}}"></div>
+                                                            </a></li>
                                                     @endforeach
                                                 </ul>
                                             </div>
@@ -93,7 +118,9 @@
                                                 <div class="ul-1 shop3">
                                                     <ul>
                                                         @foreach($locations as $item)
-                                                            <li><a href="{{route('user.filter',['id' => $item->id, 'type' => 'location'])}}">{{$item->district}}</a></li>
+                                                            <li>
+                                                                <a href="{{route('user.filter',['id' => $item->id, 'type' => 'location'])}}">{{$item->district}}</a>
+                                                            </li>
                                                         @endforeach
                                                     </ul>
                                                 </div>
@@ -116,38 +143,52 @@
                     <div class="row">
                         <div class="list-products st-bottom">
                             @foreach($items as $item)
-                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12  product-item shopv2">
-                                <div class="product-img">
-                                    <a href="{{route('user.detailProduct',$item->id)}}">
-                                        @foreach($item->photo as $key => $media)
-                                            <img src="{{ $media->getUrl() }}" alt="" class="img-responsive">
-                                        @endforeach
-                                    </a>
-                                    <div class="sale-img shop1 shop2">
-                                        <div class="before shop1 v2"></div>
+                                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12  product-item shopv2">
+                                    <div class="product-img">
+                                        <a href="{{route('user.detailProduct', $item->id)}}">
+                                            @foreach($item->photo as $key => $media)
+                                                <img src="{{ $media->getUrl() }}" alt="" class="img-responsive">
+                                            @endforeach
+                                        </a>
+                                        <div class="sale-img shop1 shop2">
+                                            <div class="before shop1 v2"></div>
+                                        </div>
+                                        <div class="ribbon zoa-hot shop-v1"><span>{{$item->category->name}}</span></div>
+                                        <div class="product-button-group product-details">
+
+
+                                            <a href="javascript:void(0);" class="zoa-btn zoa-quickview add-to-carts">
+                                                <span class="fa fa-shopping-bag"></span>
+
+                                                <form action="{{ route('cart.store') }}" method="POST" enctype="multipart/form-data">
+                                                    @csrf
+                                                    <input type="hidden" value="{{ $item->id }}" name="id">
+                                                    <input type="hidden" value="{{ $item->name }}" name="name">
+                                                    <input type="hidden" value="{{ $item->price }}" name="price">
+                                                    @foreach($item->photo as $key => $media)
+                                                        <input type="hidden" value="{{ $media->getUrl() }}"  name="image">
+                                                    @endforeach
+                                                    <input type="hidden" value="1" name="quantity">
+                                                </form>
+                                            </a>
+
+                                            <a href="#" class="zoa-btn zoa-wishlist">
+                                                <span class="fa fa-whatsapp"></span>
+                                            </a>
+                                        </div>
                                     </div>
-                                    <div class="ribbon zoa-hot shop-v1"><span>{{$item->category->name}}</span></div>
-                                    <div class="product-button-group product-details">
-                                        <a href="#" class="zoa-btn zoa-quickview">
-                                            <span class="fa fa-shopping-bag"></span>
-                                        </a>
-                                        <a href="#" class="zoa-btn zoa-wishlist">
-                                            <span class="fa fa-whatsapp"></span>
-                                        </a>
+                                    <div class="sale-para2 shop-1 pro-v1">
+                                        <p><a href="#">{{$item->name}}</a></p>
+                                        <ul>
+                                            @for($i=0; $i < $item->rating; $i++)
+                                                <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a>
+                                                    @endfor
+                                                    <br>
+                                                <li><a class="sales-36" href="#">Rp {{$item->price}}</a>
+                                                </li>
+                                        </ul>
                                     </div>
                                 </div>
-                                <div class="sale-para2 shop-1 pro-v1">
-                                    <p><a href="#">{{$item->name}}</a></p>
-                                    <ul>
-                                        @for($i=0; $i < $item->rating; $i++)
-                                            <li><a href="#"><i class="fa fa-star" aria-hidden="true"></i></a>
-                                        @endfor
-                                        <br>
-                                        <li><a class="sales-36" href="#">Rp {{$item->price}}</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
                             @endforeach
                         </div>
                         <div class="border"></div>
@@ -157,4 +198,16 @@
         </div>
 
     </section>
+@endsection
+
+@section('scripts')
+    <script>
+        $(function (e) {
+            let cart = $('.add-to-carts');
+
+            cart.on('click', function (e) {
+                cart.find('form').submit();
+            })
+        })
+    </script>
 @endsection

@@ -1,4 +1,5 @@
 @extends('layouts.user')
+
 @section('content')
 <div class="sec-home2">
     <div class="container">
@@ -54,3 +55,5 @@
     </div>
 </div>
 @endsection
+
+

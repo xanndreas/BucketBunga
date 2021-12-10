@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <title>MiuKid - Multi Store Responsive HTML Template</title>
-    <link rel="shortcut icon" href="images/favicon.png" type="image/png">
+    <link rel="shortcut icon" href="{{ asset('assets/images/favicon.png') }}" type="image/png">
     <link rel="stylesheet" href="{{ asset('assets/css/owl.carousel.min.css')}}">
     <link rel="stylesheet" href="{{ asset('assets/css/slick.css')}}">
     <link rel="stylesheet" href="{{ asset('assets/css/slick-theme.css')}}">
@@ -45,7 +45,7 @@
             <div class="row">
                 <div class="col-md-3 col-sm-12 col-xs-12 header">
                     <div class="logo">
-                        <a href="#"><img src="images/logo.png" alt="logo"></a>
+                        <a href="#"><img src="{{ asset('assets/images/logo.png') }}" alt="logo"></a>
                     </div>
                 </div>
                 <div class="col-md-3 col-sm-12 col-xs-12 logo">
@@ -119,6 +119,7 @@
                             <button type="submit" id="search-btn"><i class="ion-ios-search-strong"></i></button>
                         </form>
                     </div>
+{{--                    @dd($cart)--}}
 
                     <div class="date3 dropdown">
                         @if(Auth::user() != null)
@@ -127,54 +128,43 @@
                             </button>
                             <div class="dropdown-menu cart2 drop-home-1 check-out-home-1">
                                 <div class="cart-2">
+                                    @foreach($cart as $item)
                                     <div class="check-out">
                                         <div class="img-cart">
-                                            <a href="#"><img src="images/img27.jpg" alt="img"></a>
+                                            <a href="#"><img width="85" height="85" src="{{ $item->attributes->image }}" alt="img"></a>
                                         </div>
                                         <div class="para-cart">
-                                            <p><a href="#">Crepe Jacket With Pompom</a></p>
-                                            <h4>$36.00</h4>
-                                            <del>$42.00</del>
+                                            <p><a href="#">{{ $item->name }}</a></p>
                                             <br>
-                                            <a href="#"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                                            <h4>{{ $item->price }}</h4>
+                                            <h4>X {{ $item->quantity }}</h4>
+                                            <br>
+                                            <a href="#" class="remove-from-cart">
+                                                <i class="fa fa-trash-o" aria-hidden="true"></i>
+
+                                                <form action="{{ route('cart.remove') }}" method="POST">
+                                                    @csrf
+                                                    <input type="hidden" value="{{ $item->id }}" name="id">
+                                                </form>
+                                            </a>
                                         </div>
                                     </div>
                                     <br>
-                                    <div class="check-out">
-                                        <div class="img-cart">
-                                            <a href="#"><img src="images/img28.jpg" alt="img"></a>
-                                        </div>
-                                        <div class="para-cart">
-                                            <p><a href="#">Animal Print Sweatshirt</a></p>
-                                            <h4>$36.00</h4>
-                                            <del>$42.00</del>
-                                            <br>
-                                            <a href="#"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
-                                        </div>
-                                    </div>
-                                    <br>
-                                    <div class="check-out bd-bt">
-                                        <div class="img-cart">
-                                            <a href="#"><img src="images/img29.jpg" alt="img"></a>
-                                        </div>
-                                        <div class="para-cart">
-                                            <p><a href="#">Knit Cardigan</a></p>
-                                            <br>
-                                            <h4>$36.00</h4>
-                                            <del>$42.00</del>
-                                            <br>
-                                            <a href="#"><i class="fa fa-trash-o st" aria-hidden="true"></i></a>
-                                        </div>
-                                    </div>
+                                    @endforeach
                                 </div>
                                 <div>
                                     <div class="check-out2">
                                         <div class="total">
                                             <p>Total</p>
-                                            <span>$ 689.8</span>
+                                            <span>{{ Cart::getTotal() }}</span>
                                         </div>
                                         <div class="check">
-                                            <a href="#">check out</a>
+                                            <a href="#" class="checkout-cart">check out
+
+                                            </a>
+                                            <form action="{{ route('cart.cartCheckout') }}" method="POST">
+                                                @csrf
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
@@ -183,8 +173,8 @@
                         </div>
                         <div class="para-a a4">
                             <h4><a href="#">My Cart.</a></h4>
-                            <p>01 </p>
-                            <span>/ $150.00</span>
+                            <p>{{ Cart::getTotalQuantity()}} </p>
+                            <span>/ Rp. {{ Cart::getTotal() }}</span>
                         </div>
                         @endif
                     </div>
@@ -203,7 +193,7 @@
                 <div class="row">
                     <div class="col-md-4 col-sm-4 col-xs-12">
                         <div class="logo-para">
-                            <a href="#"><img src="images/logo.png" alt="logo"></a>
+                            <a href="#"><img src="{{ asset('assets/images/logo.png') }}" alt="logo"></a>
                             <p><em><a href="#">Miukid is a premium eCommerce theme with<br>
                                         advanced admin module.</a></em></p>
                         </div>
@@ -270,18 +260,18 @@
                         </div>
                         <div class="img-ul img-ft-st">
                             <ul>
-                                <li><a href="#"><img src="images/img18.jpg" alt="img"></a></li>
-                                <li><a href="#"><img src="images/img19.jpg" alt="img"></a></li>
-                                <li><a href="#"><img src="images/img20.jpg" alt="img"></a></li>
-                                <li><a href="#"><img src="images/img21.jpg" alt="img"></a></li>
+                                <li><a href="#"><img src="{{ asset('assets/images/img18.jpg') }}" alt="img"></a></li>
+                                <li><a href="#"><img src="{{ asset('assets/images/img19.jpg') }}" alt="img"></a></li>
+                                <li><a href="#"><img src="{{ asset('assets/images/img20.jpg') }}" alt="img"></a></li>
+                                <li><a href="#"><img src="{{ asset('assets/images/img21.jpg') }}" alt="img"></a></li>
                             </ul>
                         </div>
                         <div class="img-ul img-ft-st">
                             <ul>
-                                <li><a href="#"><img src="images/img22.jpg" alt="img"></a></li>
-                                <li><a href="#"><img src="images/img23.jpg" alt="img"></a></li>
-                                <li><a href="#"><img src="images/img24.jpg" alt="img"></a></li>
-                                <li><a href="#"><img src="images/img25.jpg" alt="img"></a></li>
+                                <li><a href="#"><img src="{{ asset('assets/images/img22.jpg') }}" alt="img"></a></li>
+                                <li><a href="#"><img src="{{ asset('assets/images/img23.jpg') }}" alt="img"></a></li>
+                                <li><a href="#"><img src="{{ asset('assets/images/img24.jpg') }}" alt="img"></a></li>
+                                <li><a href="#"><img src="{{ asset('assets/images/img25.jpg') }}" alt="img"></a></li>
                             </ul>
                         </div>
                         <div class="menu-ft">
@@ -313,11 +303,11 @@
                 <div class="col-md-4 col-sm-4 col-xs-12 ">
                     <div class="fted-left two">
                         <ul>
-                            <li><a href="#"><img src="images/icon1.png" alt="icon"></a></li>
-                            <li><a href="#"><img src="images/icon2.png" alt="icon"></a></li>
-                            <li><a href="#"><img src="images/icon3.png" alt="icon"></a></li>
-                            <li><a href="#"><img src="images/icon4.png" alt="icon"></a></li>
-                            <li><a href="#"><img src="images/icon5.png" alt="icon"></a></li>
+                            <li><a href="#"><img src="{{ asset('assets/images/icon1.png') }}" alt="icon"></a></li>
+                            <li><a href="#"><img src="{{ asset('assets/images/icon2.png') }}" alt="icon"></a></li>
+                            <li><a href="#"><img src="{{ asset('assets/images/icon3.png') }}" alt="icon"></a></li>
+                            <li><a href="#"><img src="{{ asset('assets/images/icon4.png') }}" alt="icon"></a></li>
+                            <li><a href="#"><img src="{{ asset('assets/images/icon5.png') }}" alt="icon"></a></li>
                         </ul>
                     </div>
                 </div>
@@ -364,6 +354,23 @@
 
     });
 </script>
+
+<script>
+    $(function (e) {
+        let removeCart = $('.remove-from-cart');
+        let checkout = $('.checkout-cart');
+
+        removeCart.on('click', function (e) {
+            removeCart.find('form').submit();
+        })
+
+        checkout.on('click', function (e) {
+            checkout.parent().find('form').submit();
+        })
+    })
+</script>
+
+@yield('scripts')
 
 </body>
 
